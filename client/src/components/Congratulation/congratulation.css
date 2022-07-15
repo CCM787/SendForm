@@ -1,0 +1,14 @@
+img{
+  max-width: 100px;
+  margin: 0 auto;
+  display: block; 
+  text-align: center; /* Выравнивание по центру */
+
+  
+}
+.Sent{
+text-align: center;
+color: black; 
+font-size: x-large;
+margin: 0 auto;
+}
