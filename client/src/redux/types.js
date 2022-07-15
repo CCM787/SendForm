@@ -1,6 +1,6 @@
-const GET_FORM = 'GET_FORM';
+const GET_FLAG = 'GET_FLAG';
 const SET_DATA= 'SET_DATA'
 
 
-export {GET_FORM, SET_DATA}
+export {GET_FLAG, SET_DATA}
 

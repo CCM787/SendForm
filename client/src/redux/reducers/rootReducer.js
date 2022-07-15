@@ -1,10 +1,10 @@
 import { combineReducers } from "redux"
 import { formDataReducer } from "./formDataReducer"
-import { sendFormReducer } from "./sendFormReducer"
+import { setFlagReducer } from "./setFlagReducer"
 
 const rootReducer = combineReducers({
   formData: formDataReducer,
-  sendForm: sendFormReducer,
+  setFlag: setFlagReducer,
 
 })
 

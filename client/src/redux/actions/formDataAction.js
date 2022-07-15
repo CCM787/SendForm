@@ -9,7 +9,7 @@ export function setSendData(key) {
   }
 }
 
-export const thunkSendData = ({name, telephone, email}) => {
+export function thunkSendData ({name, telephone, email}) {
   return (dispatch) => {
     console.log('ya tut');
     dispatch(setSendData())

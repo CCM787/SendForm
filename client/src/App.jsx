@@ -5,7 +5,7 @@ import Congratulation from './components/Congratulation/Congratulation';
 
 
 function App() {
-  const isOpen = useSelector(state => state.sendForm)
+  const isOpen = useSelector(state => state.setFlag)
   console.log(isOpen, '>>>>>>>');
   return (
    <>

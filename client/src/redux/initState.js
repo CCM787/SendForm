@@ -1,5 +1,5 @@
 export const initialState = () => ({
   formData:{},
-  sendForm: false,
+  setFlag: false,
 });
 
