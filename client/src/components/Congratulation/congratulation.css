@@ -1,25 +1,21 @@
-img{
+img {
   max-width: 100px;
   margin: 0 auto;
-  display: block; 
-  text-align: center; 
-
-  
+  display: block;
+  text-align: center;
 }
-.Sent{
-text-align: center;
-color: black; 
-font-size: x-large;
-margin: 0 auto;
+.Sent {
+  text-align: center;
+  color: black;
+  font-size: x-large;
+  margin: 0 auto;
 }
 
-.Congratulation{
+.Congratulation {
   margin: 0;
   position: absolute;
   top: 50%;
   left: 50%;
   margin-right: -50%;
-  transform: translate(-50%, -50%)
-}  
-
-
+  transform: translate(-50%, -50%);
+}

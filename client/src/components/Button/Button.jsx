@@ -1,14 +1,6 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
-
-function Button(props) {
-  const { 
-    formState: { isValid } 
-    } = useForm({
-    });
-  return (
-    <input type="submit" disabled={!isValid} value="Начать работу"/>
-  );
+/* eslint-disable react/prop-types */
+function Button({ type, disabled, value }) {
+  return <input type={type} disabled={disabled} value={value} />;
 }
 
 export default Button;

@@ -7,7 +7,7 @@ body {
 
 form {
   max-width: 500px;
-  margin: 0 auto
+  margin: 0 auto;
 }
 
 h1 {
@@ -125,18 +125,17 @@ button {
   padding: 10px 20px;
   border-radius: 4px;
 }
-.Agreement{
+.Agreement {
   max-width: 500px;
   margin: 0 auto;
   color: #333;
 }
 
-.Agreement-text{
+.Agreement-text {
   display: inline;
   color: rgb(117, 117, 117);
 }
 
-:link{
-
-  color:#008e39
+:link {
+  color: #008e39;
 }

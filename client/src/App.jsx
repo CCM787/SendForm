@@ -1,17 +1,26 @@
-import './App.css';
-import { useSelector } from 'react-redux';
-import Form from './components/Form/Form';
-import Congratulation from './components/Congratulation/Congratulation';
-
+import "./App.css";
+import Form from "./components/Form/Form";
+import Congratulation from "./components/Congratulation/Congratulation";
+import { CSSTransition } from "react-transition-group";
+import { useState } from "react";
 
 function App() {
-  const isOpen = useSelector(state => state.setFlag)
-  console.log(isOpen, '>>>>>>>');
+  const [showForm, setShowForm] = useState(true);
+  console.log(showForm, ">>>>>>>");
+
   return (
-   <>
-   {!isOpen ? <Form/> : < Congratulation/>}
-   </>
+    <>
+      <div>
+        <CSSTransition
+          in={!showForm}
+          timeout={750}
+          classNames="pages"
+          appear={true}
+        >
+          {showForm ? <Form onClick={setShowForm} /> : <Congratulation />}
+        </CSSTransition>
+      </div>
+    </>
   );
 }
-
 export default App;

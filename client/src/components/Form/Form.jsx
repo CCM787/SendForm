@@ -1,58 +1,50 @@
-
-import {FormProvider, useForm} from "react-hook-form"
-import { useDispatch} from "react-redux";
+/* eslint-disable react/prop-types */
+import { FormProvider, useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import { thunkSendData } from "../../redux/actions/formDataAction";
-import { thunkSetFlag } from "../../redux/actions/setFlagAction";
 import Agreement from "../Agreement/Agreement";
-import Email from "../Blanc/Email";
-import Name from "../Blanc/Name";
-import Telephone from "../Blanc/Telephone";
 import Button from "../Button/Button";
-import './Form.css'
+import "./Form.css";
+import { INPUT_TYPES } from "../Input/constants";
+import { Input } from "../Input";
 
-
-function Form(props) {
-  const dispatch = useDispatch()
+function Form({ onClick }) {
+  const dispatch = useDispatch();
   const methods = useForm({
-    mode:"onBlur"
+    mode: "onBlur",
   });
-  const { handleSubmit, formState:{errors}, reset } = methods;
-  const onSubmit = async data => {
-    try{
-      console.log(data);
-      await dispatch(thunkSetFlag())
-      // await dispatch(thunkSendData(data))
-      await reset();  
+  const {
+    handleSubmit,
+    formState: { isValid },
+    reset,
+  } = methods;
+  const onSubmit = async (data) => {
+    try {
+      console.log(data); // смотрим какие данные отправляются на сервер
+      onClick(false); // должна находиться под запросом на сервер, для демонстрации смены страниц поднял выше, при ошибке с отправкой на сервер, данные в форме сбрасываются
+      await dispatch(thunkSendData(data)); // пост запрос на сервер
+      reset();
+    } catch (err) {
+      console.error("Произошла ошибка!", err);
+      reset();
     }
-    catch(err){
-      console.error('Произошла ошибка!', err)
-    }
-  }
-  
-    return (
-      <>
-      <h1>Заголовок формы</h1>
-      <FormProvider {...methods} >  
-      <form onSubmit={handleSubmit(onSubmit)}>
-      <Name/>
-      <div style={{height:40}}>
-          {errors?.name && <p className='inputForm'>{errors?.name?.message || "Error!"} </p>}
-        </div>
-      <Telephone/>
-      <div style={{height:40}}>
-          {errors?.telephone && <p className='inputForm'>{errors?.telephone?.message || "Error!"} </p>}
-        </div>
-      <Email/>
-      <div style={{height:40}}>
-          {errors?.email && <p className='inputForm'>{errors?.email?.message || "Error!"} </p>}
-        </div>
-      <Button/>
-      </form>
-      </FormProvider>
-      <Agreement/>
-        </>
-    );
-  }
+  };
 
+  return (
+    <>
+      <h1>Заголовок формы</h1>
+      <FormProvider {...methods}>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Input type={INPUT_TYPES.NAME} />
+          <Input type={INPUT_TYPES.PHONE} />
+          <Input type={INPUT_TYPES.EMAIL} />
+
+          <Button type="submit" disabled={!isValid} value="Начать работу" />
+        </form>
+      </FormProvider>
+      <Agreement />
+    </>
+  );
+}
 
 export default Form;
